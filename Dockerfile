@@ -8,6 +8,7 @@ RUN echo 'Asia/Shanghai' >/etc/timezone
 WORKDIR /app
 RUN apt-get update && apt-get install -y build-essential libssl-dev libffi-dev python3-dev
 RUN pip install --upgrade pip setuptools
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 RUN pip install cryptography
 RUN pip install cffi
 RUN pip install -r requirements.txt
