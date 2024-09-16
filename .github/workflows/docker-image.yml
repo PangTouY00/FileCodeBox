@@ -2,9 +2,6 @@ name: Build and push Docker image
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
 
 jobs:
   buildx:
@@ -42,8 +39,8 @@ jobs:
           platforms: linux/arm/v7
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/filecodebox:beta
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+          #cache-from: type=local,src=/tmp/.buildx-cache
+          #cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
       - name: Move cache
         run: |
